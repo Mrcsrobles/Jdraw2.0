@@ -14,6 +14,7 @@ public class BDibujo implements Baliza {
         this.comandos = new LinkedList<>();
         comandos.add("clear");
         comandos.add("undo");
+        //Aquí se añadiría el inicio del nuevo comando
     }
     @Override
     public boolean Este(String comando) {
@@ -29,6 +30,7 @@ public class BDibujo implements Baliza {
             case ("undo"):
                 d.undo(arch);
                 break;
+            //Aquí iría la llamada del nuevo comando
         }
     }
 }

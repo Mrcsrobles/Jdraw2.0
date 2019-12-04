@@ -13,8 +13,12 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Scanner;
 
+/*Cuando se crea este objeto se crean primero los objetos necesarios del programa y sus balizas, que permiten llamarlos
+y además, se leen los comandos introducidos y se procesan pasandolos por las balizas
+ */
+
+
 class Llamador {
-    //Esta clase llama a las otras comprobando cual se llama
     private Dibujo dibujo;
     private Estilos estilos;
     private Archivo archivo;
@@ -22,7 +26,7 @@ class Llamador {
     private LinkedList<Baliza> listaBalizas;
     //se crean todos los objetos que van a ser necesarios, y que van a tener una baliza
 
-    public Llamador() throws IOException {
+    public Llamador() {
         archivo = new Archivo();
         dibujo = new Dibujo(archivo);
         estilos = new Estilos();
@@ -39,10 +43,14 @@ class Llamador {
     }
 
     private void Ciclo() {
+        /*El ciclo va a ser unicamente una iteración que se va a repetir hasta que se introduzca el comando de salida
+
+
+         */
         Scanner sc = new Scanner(System.in);
         String input;
 
-        System.out.print("Buenas");
+        System.out.println("Buenas");
 
         System.out.print(">>");
         input = sc.nextLine();
@@ -56,10 +64,13 @@ class Llamador {
     }
 
     private void Procesador(String input) {
-
+        /*El comando introducido será leido por este método que lo dividirá en sus componentes, la orden y los
+        argumentos
+         */
         String args = input.split(" ")[1];//A partir del espacio est� la ruta, el segundo elemento
         String orden = input.split(" ")[0];
-
+        //En este bucle por cada baliza que haya se mira si el comando pertenece a esa clase y si pertenece se pasan
+        //todos los objetos, la orden y los argumentos
         for (Baliza i : listaBalizas) {
             if (i.Este(orden)) {
                 i.Llamar(dibujo, estilos, archivo, dibujante, orden, args);

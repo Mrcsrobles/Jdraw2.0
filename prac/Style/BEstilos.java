@@ -16,6 +16,7 @@ public class BEstilos implements Baliza {
         comandos.add("fillcolor");
         comandos.add("width");
         comandos.add("pencolor");
+        //Aquí se añadiría el inicio del nuevo comando
     }
     @Override
     public boolean Este(String comando) {
@@ -34,6 +35,7 @@ public class BEstilos implements Baliza {
             case ("fillcolor"):
                 es.setFillcolor(args);
                 break;
+                //Aquí iría la llamada del nuevo comando
         }
     }
 }

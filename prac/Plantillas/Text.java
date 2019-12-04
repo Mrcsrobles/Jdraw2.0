@@ -13,8 +13,12 @@ public class Text implements Plantilla {
     public String dibujo(String comando, String estilo) {
         String[] partes = comando.split(" ");
         String[] args = partes[1].split(",");
-        String resultado = "<text x=\"" + args[0] + "\" y=\"" + args[1] + "\"" + estilo + ">" + args[2] + "</text>";
+
+        //Para que se acepten espacios hay que recuperar lo separado
+        String frase = ReconstructorComando.Reconstruir(partes, 2);//pos0=orden;pos1=args;pos2=primerComandoExtra
+
+        String resultado = "<text x=\"" + args[0] + "\" y=\"" + args[1] + "\"" + estilo + ">" + args[2] + frase + "</text>";
         return resultado;
     }
-    //recuerda que el color de relleno inicial que se usa es el blanco,por lo que no se verá
+    //recuerda que el color de relleno inicial que se usa es transparente,por lo que no se verá
 }

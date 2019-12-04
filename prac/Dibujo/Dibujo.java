@@ -14,6 +14,10 @@ public class Dibujo {
     //Hasta la 7 son etiquetas de formato
     //Las 3 úlimas son etiquetas de cierre
     public Dibujo(Archivo Arch) {
+        /*
+        El constructor lo que hace es reiniciar el dibujo a tan solo las cabeceras y los cierres
+        y abrir la ventana que muestra el dibujo
+         */
         try {
             clear(Arch);
             Desktop.getDesktop().browse(Arch.getF().toURI());
@@ -35,8 +39,9 @@ public class Dibujo {
         if (texto.size() > 10) {
             texto.remove(7);
             LEArchivos.EscribirArchivo(texto, Arch.getF());//Hay que realizar los cambios en el Archivo
+        }else{
+            System.out.println("Nada que deshacer");
         }
-
     }
 
 

@@ -14,6 +14,7 @@ public class BArchivo implements Baliza {
         this.comandos = new LinkedList<>();
         comandos.add("load");
         comandos.add("save");
+        //Aquí se añadiría el inicio del nuevo comando
     }
 
     @Override
@@ -30,6 +31,7 @@ public class BArchivo implements Baliza {
             case ("load"):
                 arch.Cargar(args);
                 break;
+            //Aquí iría la llamada del nuevo comando
         }
     }
 }
