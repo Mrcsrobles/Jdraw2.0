@@ -11,10 +11,10 @@ public class Rect implements Plantilla {
     }
 
     @Override
-    public String dibujo(String comando,String estilo) {
+    public String dibujo(String comando, String estilo) {
         String[] partes = comando.split(" ");
         String[] args = partes[1].split(",");
-        String resultado = "<rect x=\""+args[0]+"\" y=\"" +args[1]+ "\" width=\""+args[2]+"\" height=\"" + args[3] + "\"" +estilo;
+        String resultado = "<rect x=\"" + args[0] + "\" y=\"" + args[1] + "\" width=\"" + args[2] + "\" height=\"" + args[3] + "\"" + estilo + "/>";
         return resultado;
     }
 

@@ -14,7 +14,7 @@ public class Archivo {
         return f;
     }
 
-    public void Guardar(String ruta) throws IOException {
+    public void Guardar(String ruta) {
         //Para guardar el Archivo lo único que haremos será mover el Archivo temporal
         //de la carpeta tmp a la ruta indicada, esto lo haremos con el método renameTo
         File d = new File(ruta);//Se crea otro Archivo en el directorio indicado

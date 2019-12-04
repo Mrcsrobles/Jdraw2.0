@@ -1,25 +1,44 @@
 package prac;
 
+import prac.Dibujo.BDibujo;
+import prac.Dibujo.Dibujo;
 import prac.ManejadorArchivos.Archivo;
+import prac.ManejadorArchivos.BArchivo;
+import prac.Plantillas.BDibujante;
+import prac.Plantillas.Dibujante;
+import prac.Style.BEstilos;
+import prac.Style.Estilos;
 
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 class Llamador {
-    private Dibujo dib;
-    private Estilos style;
-    private Archivo arch;
-    private Dibujante dibu;
+    //Esta clase llama a las otras comprobando cual se llama
+    private Dibujo dibujo;
+    private Estilos estilos;
+    private Archivo archivo;
+    private Dibujante dibujante;
+    private LinkedList<Baliza> listaBalizas;
+    //se crean todos los objetos que van a ser necesarios, y que van a tener una baliza
 
     public Llamador() throws IOException {
-        arch = new Archivo();
-        dib = new Dibujo(arch);
-        style = new Estilos();
-        dibu = new Dibujante();
+        archivo = new Archivo();
+        dibujo = new Dibujo(archivo);
+        estilos = new Estilos();
+        dibujante = new Dibujante();
+        //Primero se crean los objetos con los que se va a trabajar
+        listaBalizas = new LinkedList<>();
+        listaBalizas.add(new BArchivo());
+        listaBalizas.add(new BDibujante());
+        listaBalizas.add(new BDibujo());
+        listaBalizas.add(new BEstilos());
+        //Después se crean las balizas que llamarán a cierto método en base al comando introducido
         Ciclo();
+        //Finalmente se itera de manera indefinida leyendo comandos
     }
 
-    private void Ciclo() throws IOException {
+    private void Ciclo() {
         Scanner sc = new Scanner(System.in);
         String input;
 
@@ -36,36 +55,16 @@ class Llamador {
         }
     }
 
-    private void Procesador(String input) throws IOException {
+    private void Procesador(String input) {
 
         String args = input.split(" ")[1];//A partir del espacio est� la ruta, el segundo elemento
         String orden = input.split(" ")[0];
 
-        switch (orden) {
-            case ("save"):
-                arch.Guardar(args);
-                break;
-            case ("load"):
-                arch.Cargar(args);
-                break;
-            case ("clear"):
-                dib.clear(arch);
-                break;
-            case ("undo"):
-                dib.undo(arch);
-                break;
-            case ("pencolor"):
-                style.setPencolor(args);
-                break;
-            case ("width"):
-                style.setWidth(args);
-                break;
-            case ("fillcolor"):
-                style.setFillcolor(args);
-                break;
-            default:
-            String DibujoHecho = dibu.dibujar(input, style);
-            dib.AddDib(DibujoHecho, arch);
+        for (Baliza i : listaBalizas) {
+            if (i.Este(orden)) {
+                i.Llamar(dibujo, estilos, archivo, dibujante, orden, args);
+            }
         }
     }
 }
+
