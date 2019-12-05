@@ -1,12 +1,13 @@
 package prac.ManejadorArchivos;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.LinkedList;
 
 public class Archivo {
     private File f; //La clase Archivo tendrá un Archivo temporal como atributo
 
-    public Archivo()  { //El constructor unicamente crea el Archivo html temporal
+    public Archivo() { //El constructor unicamente crea el Archivo html temporal
         try {
             f = File.createTempFile("NombreArchivoTemporalAunqueEsteSirve", ".html");
         } catch (IOException e) {
@@ -14,7 +15,7 @@ public class Archivo {
         }
     }
 
-    public File getF() {
+    public File GetF() {
         return f;
     }
 

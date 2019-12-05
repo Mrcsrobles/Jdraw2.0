@@ -19,15 +19,15 @@ public class Dibujante {
         lista.add(new Ellipse());
     }
 
-    public String dibujar(String orden, Estilos Estilo) {
+    public String Dibujar(String orden, Estilos estilo) {
 
-        String estilo = Estilo.sacarEstilo();
+        String estilos = estilo.sacarEstilo();
         /*recorre todas las posibles plantillas y cuando encuentra la correcta
         la pinta usando el estilo indicado
          */
         for (prac.Plantillas.Plantilla Plantilla : lista) {
             if (Plantilla.Es(orden)) {//Se comprueba a qué dibujo pertenece
-                return Plantilla.dibujo(orden, estilo);//Cuando termina de dibujarse se devuelve como un String el dibujo completo
+                return Plantilla.Dibujo(orden, estilos);//Cuando termina de dibujarse se devuelve como un String el dibujo completo
             }
         }
         return null;//En caso de no existir devuelve nulo

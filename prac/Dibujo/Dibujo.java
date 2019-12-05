@@ -20,32 +20,32 @@ public class Dibujo {
          */
         try {
             clear(Arch);
-            Desktop.getDesktop().browse(Arch.getF().toURI());
+            Desktop.getDesktop().browse(Arch.GetF().toURI());
         } catch (IOException e) {
             System.out.print("Un error ocurrió abriendo el navegador");
         }
 
     }
 
-    public void AddDib(String dato, Archivo Arch){
+    public void AddDib(String dato, Archivo Arch) {
         //cada vez que se añada un dibujo habrá que pasar todo el string para que se escriba con los cambios
         texto.add(7, dato + "\n");
-        LEArchivos.EscribirArchivo(texto, Arch.getF());
+        LEArchivos.EscribirArchivo(texto, Arch.GetF());
 
     }
 
-    public void undo(Archivo Arch) {
+    public void Undo(Archivo Arch) {
         //Siempre que se haga undo el número de elementos debe ser mayor que 10 para garantizar que hay mínimo un elemento svg
         if (texto.size() > 10) {
             texto.remove(7);
-            LEArchivos.EscribirArchivo(texto, Arch.getF());//Hay que realizar los cambios en el Archivo
-        }else{
+            LEArchivos.EscribirArchivo(texto, Arch.GetF());//Hay que realizar los cambios en el Archivo
+        } else {
             System.out.println("Nada que deshacer");
         }
     }
 
 
-    public void clear(Archivo Arch){
+    public void clear(Archivo Arch) {
         //El método clear lo que hace es borrar todos los svg y restablecer las etiquetas básicas
         texto = new LinkedList<>();
         texto.add("<html>\n");
@@ -59,6 +59,6 @@ public class Dibujo {
         texto.add("</svg>\n");
         texto.add("</body>\n");
         texto.add("</html>");
-        LEArchivos.EscribirArchivo(texto, Arch.getF());//Hay que realizar los cambios en el Archivo
+        LEArchivos.EscribirArchivo(texto, Arch.GetF());//Hay que realizar los cambios en el Archivo
     }
 }

@@ -11,9 +11,9 @@ public class Circle implements Plantilla {
     }
 
     @Override
-    public String dibujo(String comando, String estilo) {
+    public String Dibujo(String comando, String estilo) {
         String[] partes = comando.split(" ");
-        String[] args = partes[1].split(",");
+        String[] args = partes[2].split(",");
         return "<circle cx=\"" + args[0] + "\" cy=\"" + args[1] + "\" r=\"" + args[2] + "\"" + estilo + "/>";
 
     }

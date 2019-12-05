@@ -10,7 +10,7 @@ public class Text implements Plantilla {
     }
 
     @Override
-    public String dibujo(String comando, String estilo) {
+    public String Dibujo(String comando, String estilo) {
         String[] partes = comando.split(" ");
 
         String[] args = partes[2].split(",");

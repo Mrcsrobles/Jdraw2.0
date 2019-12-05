@@ -8,7 +8,7 @@ import prac.Style.Estilos;
 import java.util.LinkedList;
 
 public class BDibujo implements Baliza {
-    LinkedList<String> comandos;
+    private LinkedList<String> comandos;
 
     public BDibujo() {
         this.comandos = new LinkedList<>();
@@ -16,6 +16,7 @@ public class BDibujo implements Baliza {
         comandos.add("undo");
         //Aquí se añadiría el inicio del nuevo comando
     }
+
     @Override
     public boolean Este(String comando) {
         return comandos.contains(comando);
@@ -28,7 +29,7 @@ public class BDibujo implements Baliza {
                 d.clear(arch);
                 break;
             case ("undo"):
-                d.undo(arch);
+                d.Undo(arch);
                 break;
             //Aquí iría la llamada del nuevo comando
         }

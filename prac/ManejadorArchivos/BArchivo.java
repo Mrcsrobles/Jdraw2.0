@@ -1,14 +1,14 @@
 package prac.ManejadorArchivos;
 
 import prac.Baliza;
-import prac.Plantillas.Dibujante;
 import prac.Dibujo.Dibujo;
+import prac.Plantillas.Dibujante;
 import prac.Style.Estilos;
 
 import java.util.LinkedList;
 
 public class BArchivo implements Baliza {
-    LinkedList<String> comandos;
+    private LinkedList<String> comandos;
 
     public BArchivo() {
         this.comandos = new LinkedList<>();
@@ -23,7 +23,7 @@ public class BArchivo implements Baliza {
     }
 
     @Override
-    public void Llamar(Dibujo d, Estilos es, Archivo arch, Dibujante dibujante, String comando,String args) {
+    public void Llamar(Dibujo d, Estilos es, Archivo arch, Dibujante dibujante, String comando, String args) {
         switch (comando) {
             case ("save"):
                 arch.Guardar(args);

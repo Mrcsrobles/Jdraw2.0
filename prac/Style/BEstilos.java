@@ -1,15 +1,15 @@
 package prac.Style;
 
 import prac.Baliza;
-import prac.Plantillas.Dibujante;
 import prac.Dibujo.Dibujo;
 import prac.ManejadorArchivos.Archivo;
+import prac.Plantillas.Dibujante;
 
 import java.util.LinkedList;
 
 public class BEstilos implements Baliza {
 
-    LinkedList<String> comandos;
+    private LinkedList<String> comandos;
 
     public BEstilos() {
         this.comandos = new LinkedList<>();
@@ -18,6 +18,7 @@ public class BEstilos implements Baliza {
         comandos.add("pencolor");
         //Aquí se añadiría el inicio del nuevo comando
     }
+
     @Override
     public boolean Este(String comando) {
         return comandos.contains(comando);
@@ -35,7 +36,7 @@ public class BEstilos implements Baliza {
             case ("fillcolor"):
                 es.setFillcolor(args);
                 break;
-                //Aquí iría la llamada del nuevo comando
+            //Aquí iría la llamada del nuevo comando
         }
     }
 }

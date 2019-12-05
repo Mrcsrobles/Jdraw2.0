@@ -10,7 +10,6 @@ import prac.Plantillas.ReconstructorComando;
 import prac.Style.BEstilos;
 import prac.Style.Estilos;
 
-import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -68,7 +67,7 @@ class Llamador {
         /*El comando introducido será leido por este método que lo dividirá en sus componentes, la orden y los
         argumentos
          */
-        String args = ReconstructorComando.Reconstruir(input.split(" "),1);//A partir del espacio est� la ruta, el segundo elemento
+        String args = ReconstructorComando.Reconstruir(input.split(" "), 1);//A partir del espacio est� la ruta, el segundo elemento
         String orden = input.split(" ")[0];
         //En este bucle por cada baliza que haya se mira si el comando pertenece a esa clase y si pertenece se pasan
         //todos los objetos, la orden y los argumentos
