@@ -1,6 +1,7 @@
 package prac.Plantillas;
 
 
+import prac.Plantillas.*;
 import prac.Style.Estilos;
 
 import java.util.LinkedList;

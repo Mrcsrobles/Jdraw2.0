@@ -2,6 +2,7 @@ package prac.Dibujo;
 
 import prac.ManejadorArchivos.Archivo;
 import prac.ManejadorArchivos.LEArchivos;
+import prac.Ordenes;
 
 import java.awt.*;
 import java.io.IOException;
@@ -19,7 +20,7 @@ public class Dibujo {
         y abrir la ventana que muestra el dibujo
          */
         try {
-            clear(Arch);
+            clear(Arch,new Ordenes());
             Desktop.getDesktop().browse(Arch.GetF().toURI());
         } catch (IOException e) {
             System.out.print("Un error ocurrió abriendo el navegador");
@@ -34,10 +35,11 @@ public class Dibujo {
 
     }
 
-    public void Undo(Archivo Arch) {
+    public void Undo(Archivo Arch,Ordenes ordenes) {
         //Siempre que se haga undo el número de elementos debe ser mayor que 10 para garantizar que hay mínimo un elemento svg
         if (texto.size() > 10) {
             texto.remove(7);
+            ordenes.RemoveOrden();
             LEArchivos.EscribirArchivo(texto, Arch.GetF());//Hay que realizar los cambios en el Archivo
         } else {
             System.out.println("Nada que deshacer");
@@ -45,7 +47,7 @@ public class Dibujo {
     }
 
 
-    public void clear(Archivo Arch) {
+    public void clear(Archivo Arch, Ordenes ordenes) {
         //El método clear lo que hace es borrar todos los svg y restablecer las etiquetas básicas
         texto = new LinkedList<>();
         texto.add("<html>\n");
@@ -59,6 +61,7 @@ public class Dibujo {
         texto.add("</svg>\n");
         texto.add("</body>\n");
         texto.add("</html>");
+        ordenes.setOrdenes(new LinkedList<>());
         LEArchivos.EscribirArchivo(texto, Arch.GetF());//Hay que realizar los cambios en el Archivo
     }
 }

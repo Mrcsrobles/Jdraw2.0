@@ -1,7 +1,8 @@
 package prac.Dibujo;
 
-import prac.Baliza;
 import prac.ManejadorArchivos.Archivo;
+import prac.Baliza;
+import prac.Ordenes;
 import prac.Plantillas.Dibujante;
 import prac.Style.Estilos;
 
@@ -23,13 +24,15 @@ public class BDibujo implements Baliza {
     }
 
     @Override
-    public void Llamar(Dibujo d, Estilos es, Archivo arch, Dibujante dibujante, String comando, String args) {
+    public void Llamar(Dibujo d, Estilos es, Archivo arch, Dibujante dibujante, Ordenes ordenes, String comando, String args) {
         switch (comando) {
             case ("clear"):
-                d.clear(arch);
+                d.clear(arch,ordenes);
+                //Aquí no se almacena la orden
                 break;
             case ("undo"):
-                d.Undo(arch);
+                d.Undo(arch,ordenes);
+                //Aquí no se almacena la orden
                 break;
             //Aquí iría la llamada del nuevo comando
         }

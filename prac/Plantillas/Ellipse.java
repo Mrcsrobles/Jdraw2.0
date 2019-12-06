@@ -12,8 +12,8 @@ public class Ellipse implements Plantilla {
 
     @Override
     public String Dibujo(String comando, String estilo) {
-        String[] partes = comando.split(" ");
-        String[] args = partes[2].split(",");
+        String[] partes = comando.split(" +");
+        String[] args = partes[1].split(",");
         String resultado = "<ellipse cx=\"" + args[0] + "\" cy=\"" + args[1] + "\" rx=\"" + args[2] + "\" ry=\"" + args[3] + "\"" + estilo + "/>";
         return resultado;
 

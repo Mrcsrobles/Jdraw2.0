@@ -3,6 +3,7 @@ package prac.Plantillas;
 import prac.Baliza;
 import prac.Dibujo.Dibujo;
 import prac.ManejadorArchivos.Archivo;
+import prac.Ordenes;
 import prac.Style.Estilos;
 
 import java.util.LinkedList;
@@ -27,7 +28,8 @@ public class BDibujante implements Baliza {
     }
 
     @Override
-    public void Llamar(Dibujo d, Estilos es, Archivo arch, Dibujante dibujante, String comando, String args) {
+    public void Llamar(Dibujo d, Estilos es, Archivo arch, Dibujante dibujante, Ordenes ordenes, String comando, String args) {
+        ordenes.AddOrden(comando + " " + args);
         String[] orden = {comando, args};
         String dibujo = dibujante.Dibujar(comando + " " + args, es);//se tiene que pasar el comando original
         d.AddDib(dibujo, arch);

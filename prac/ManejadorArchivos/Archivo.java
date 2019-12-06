@@ -1,8 +1,9 @@
 package prac.ManejadorArchivos;
+import prac.Ordenes;
+import prac.Style.Estilos;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.LinkedList;
+import java.io.*;
+
 
 public class Archivo {
     private File f; //La clase Archivo tendrá un Archivo temporal como atributo
@@ -19,25 +20,35 @@ public class Archivo {
         return f;
     }
 
-    public void Guardar(String ruta) {
-        /*Para guardar el Archivo lo único que haremos será mover el Archivo temporal
-        de la carpeta tmp a la ruta indicada, esto lo haremos con el método renameTo
+    public void Guardar(String ruta, Ordenes ordenes)  {
+        /*Para guardar el Archivo lo único que haremos será crear un nuevo fichero en la ruta
+        y se escribe el objeto Ordenes
          */
-        File d = new File(ruta);//Se crea otro Archivo en el directorio indicado
-        LEArchivos.EscribirArchivo(LEArchivos.LeerArchivo(f), d);
-
-
+        try {
+            File d = new File(ruta+".jd");//Se crea otro Archivo en el directorio indicado
+            FileOutputStream f = new FileOutputStream(d);
+            ObjectOutputStream o = new ObjectOutputStream(f);
+            o.writeObject(ordenes);
+        }catch (IOException e){
+            System.out.print("La ruta no es válida");
+        }
     }
 
-    public void Cargar(String ruta) {
-        /*Para cargar un Archivo a nuestro tmp lo que haremos será linea a linea leerlo
-        y pasar lo leido a una lista que escribiremos en el tmp con el primer método
+    public void Cargar(String ruta, Ordenes ordenes, Estilos es) {
+        /*Para cargar un Archivo a nuestro tmp lo que haremos será copiar la lista de ordenes y ejecutarlas
         */
-        LinkedList<String> lista = LEArchivos.LeerArchivo(new File(ruta));//Se lee el Archivo indicado
-        LEArchivos.EscribirArchivo(lista, this.f);//Se escriben las lineas leidas en el Archivo indicado
-
-
+        try {
+            File d = new File(ruta);//Se crea otro Archivo en el directorio indicado
+            FileInputStream f = new FileInputStream(d);
+            ObjectInputStream o = new ObjectInputStream(f);
+            Ordenes Leidas = (Ordenes) o.readObject();
+            ordenes.setOrdenes(Leidas.getOrdenes());
+            es.Reset();//Para que el dibujo no se vea afectado por el estilo anterior hay que resetearlo
+        }catch (IOException e){
+            System.out.print("Un error ocurrió con el archivo");
+        }catch (ClassNotFoundException e){
+            System.out.print("Un error interno ocurrió");
+        }
     }
-
 }
 

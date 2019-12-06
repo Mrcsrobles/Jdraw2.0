@@ -11,9 +11,9 @@ public class Text implements Plantilla {
 
     @Override
     public String Dibujo(String comando, String estilo) {
-        String[] partes = comando.split(" ");
+        String[] partes = comando.split(" +");
 
-        String[] args = partes[2].split(",");
+        String[] args = partes[1].split(",");
 
         //Para que se acepten espacios hay que recuperar lo separado
         String frase = ReconstructorComando.Reconstruir(partes, 3);//pos0=orden;pos1=args;pos2=primerComandoExtra

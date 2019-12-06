@@ -23,6 +23,7 @@ class Llamador {
     private Estilos estilos;
     private Archivo archivo;
     private Dibujante dibujante;
+    private Ordenes ordenes;
     private LinkedList<Baliza> listaBalizas;
     //se crean todos los objetos que van a ser necesarios, y que van a tener una baliza
 
@@ -31,6 +32,7 @@ class Llamador {
         dibujo = new Dibujo(archivo);
         estilos = new Estilos();
         dibujante = new Dibujante();
+        ordenes = new Ordenes();
         //Primero se crean los objetos con los que se va a trabajar
         listaBalizas = new LinkedList<>();
         listaBalizas.add(new BArchivo());
@@ -63,18 +65,34 @@ class Llamador {
         }
     }
 
-    private void Procesador(String input) {
+    public void Procesador(String input) {
         /*El comando introducido será leido por este método que lo dividirá en sus componentes, la orden y los
         argumentos
          */
-        String args = ReconstructorComando.Reconstruir(input.split(" "), 1);//A partir del espacio est� la ruta, el segundo elemento
-        String orden = input.split(" ")[0];
+        String[] division = input.split(" +");
+        String args = ReconstructorComando.Reconstruir(division, 1);//A partir del espacio son los argumentos, que puede tener espacios
+        String orden = division[0];
         //En este bucle por cada baliza que haya se mira si el comando pertenece a esa clase y si pertenece se pasan
         //todos los objetos, la orden y los argumentos
         for (Baliza i : listaBalizas) {
             if (i.Este(orden)) {
-                i.Llamar(dibujo, estilos, archivo, dibujante, orden, args);
+                i.Llamar(dibujo, estilos, archivo, dibujante, ordenes, orden, args);
+                break;
             }
+        }
+        if (input.startsWith("load")) {
+            Recargar(ordenes);
+        }
+
+    }
+
+    private void Recargar(Ordenes ordenes) {
+
+        LinkedList<String> lista = (LinkedList<String>) ordenes.getOrdenes().clone();
+
+        for (String i : lista) {
+            Procesador(i);
+            ordenes.RemoveOrden();
         }
     }
 }

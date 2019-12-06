@@ -48,4 +48,12 @@ public class Estilos {
         String datos = "style=\"" + fillColor + ";" + stroke + ";" + FillOpacity + ";" + ancho + ";" + strokeOpaciy + "\" ";
         return datos;
     }
+
+    public void Reset(){
+        this.pencolor = "0,0,0";
+        this.fillcolor = "0,0,0";
+        this.width = "1";
+        this.fillOpacity = "0";
+        this.strokeOpacity = "1";
+    }
 }

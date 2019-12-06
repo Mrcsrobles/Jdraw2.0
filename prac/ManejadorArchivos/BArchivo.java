@@ -1,8 +1,9 @@
 package prac.ManejadorArchivos;
 
 import prac.Baliza;
-import prac.Dibujo.Dibujo;
+import prac.Ordenes;
 import prac.Plantillas.Dibujante;
+import prac.Dibujo.Dibujo;
 import prac.Style.Estilos;
 
 import java.util.LinkedList;
@@ -23,13 +24,13 @@ public class BArchivo implements Baliza {
     }
 
     @Override
-    public void Llamar(Dibujo d, Estilos es, Archivo arch, Dibujante dibujante, String comando, String args) {
+    public void Llamar(Dibujo d, Estilos es, Archivo arch, Dibujante dibujante, Ordenes ordenes, String comando, String args) {
         switch (comando) {
             case ("save"):
-                arch.Guardar(args);
+                arch.Guardar(args,ordenes);
                 break;
             case ("load"):
-                arch.Cargar(args);
+                arch.Cargar(args,ordenes,es);
                 break;
             //Aquí iría la llamada del nuevo comando
         }

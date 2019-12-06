@@ -3,6 +3,7 @@ package prac.Style;
 import prac.Baliza;
 import prac.Dibujo.Dibujo;
 import prac.ManejadorArchivos.Archivo;
+import prac.Ordenes;
 import prac.Plantillas.Dibujante;
 
 import java.util.LinkedList;
@@ -25,7 +26,7 @@ public class BEstilos implements Baliza {
     }
 
     @Override
-    public void Llamar(Dibujo d, Estilos es, Archivo arch, Dibujante dibujante, String comando, String args) {
+    public void Llamar(Dibujo d, Estilos es, Archivo arch, Dibujante dibujante, Ordenes ordenes, String comando, String args) {
         switch (comando) {
             case ("pencolor"):
                 es.setPencolor(args);
@@ -37,6 +38,10 @@ public class BEstilos implements Baliza {
                 es.setFillcolor(args);
                 break;
             //Aquí iría la llamada del nuevo comando
+
+
         }
+        d.AddDib("<!--CambioDeEstilo-->",arch);
+        ordenes.AddOrden(comando + " " + args);
     }
 }
