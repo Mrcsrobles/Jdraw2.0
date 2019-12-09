@@ -22,10 +22,9 @@ public class Archivo {
 
     public void Guardar(String ruta, Ordenes ordenes)  {
         /*Para guardar el Archivo lo único que haremos será crear un nuevo fichero en la ruta
-        y se escribe el objeto Ordenes
+        y se escribe el objeto prac.Ordenes
          */
         try {
-            ruta = ruta.trim();
             File d = new File(ruta+".jd");//Se crea otro Archivo en el directorio indicado
             FileOutputStream f = new FileOutputStream(d);
             ObjectOutputStream o = new ObjectOutputStream(f);
@@ -39,7 +38,6 @@ public class Archivo {
         /*Para cargar un Archivo a nuestro tmp lo que haremos será copiar la lista de ordenes y ejecutarlas
         */
         try {
-            ruta = ruta.trim();
             File d = new File(ruta);//Se crea otro Archivo en el directorio indicado
             FileInputStream f = new FileInputStream(d);
             ObjectInputStream o = new ObjectInputStream(f);

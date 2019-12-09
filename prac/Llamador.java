@@ -71,7 +71,7 @@ class Llamador {
          */
         int contador = 0;
         String[] division = input.split(" +");//Lo divido en orden y arguementos
-        String args = ReconstructorComando.Reconstruir(division, 1);//A partir del espacio son los argumentos, que puede tener espacios
+        String args = ReconstructorComando.Reconstruir(division, 1," ");//A partir del espacio son los argumentos, que puede tener espacios
         String orden = division[0];
         //En este bucle por cada baliza que haya se mira si el comando pertenece a esa clase y si pertenece se pasan
         //todos los objetos, la orden y los argumentos

@@ -26,7 +26,7 @@ public class BEstilos implements Baliza {
     }
 
     @Override
-    public void Llamar(Dibujo d, Estilos es, Archivo arch, Dibujante dibujante, Ordenes ordenes, String comando, String args) {
+    public void Llamar(Dibujo d, prac.Style.Estilos es, Archivo arch, Dibujante dibujante, Ordenes ordenes, String comando, String args) {
         switch (comando) {
             case ("pencolor"):
                 es.setPencolor(args);

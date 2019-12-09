@@ -1,6 +1,4 @@
-package prac;
-
-/*En esta clase simplemente tendremos el main, el cual crea un objeto
+package prac;/*En esta clase simplemente tendremos el main, el cual crea un objeto
 llamador que se encargará de iterar a través de los comandos hasta que se le
 introduzca exit
 
