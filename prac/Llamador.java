@@ -69,6 +69,7 @@ class Llamador {
         /*El comando introducido será leido por este método que lo dividirá en sus componentes, la orden y los
         argumentos
          */
+        int contador = 0;
         String[] division = input.split(" +");
         String args = ReconstructorComando.Reconstruir(division, 1);//A partir del espacio son los argumentos, que puede tener espacios
         String orden = division[0];
@@ -79,11 +80,14 @@ class Llamador {
                 i.Llamar(dibujo, estilos, archivo, dibujante, ordenes, orden, args);
                 break;
             }
+            contador++;
+        }
+        if (contador==(listaBalizas.size())){
+            System.out.println("Error");
         }
         if (input.startsWith("load")) {
             Recargar(ordenes);
         }
-
     }
 
     private void Recargar(Ordenes ordenes) {
