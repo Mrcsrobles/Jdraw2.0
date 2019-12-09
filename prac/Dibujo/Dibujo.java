@@ -32,7 +32,6 @@ public class Dibujo {
         //cada vez que se añada un dibujo habrá que pasar todo el string para que se escriba con los cambios
         texto.add(7, dato + "\n");
         LEArchivos.EscribirArchivo(texto, Arch.GetF());
-
     }
 
     public void Undo(Archivo Arch,Ordenes ordenes) {
@@ -45,7 +44,6 @@ public class Dibujo {
             System.out.println("Nada que deshacer");
         }
     }
-
 
     public void clear(Archivo Arch, Ordenes ordenes) {
         //El método clear lo que hace es borrar todos los svg y restablecer las etiquetas básicas

@@ -41,7 +41,6 @@ public class BEstilos implements Baliza {
 
 
         }
-        d.AddDib("<!--CambioDeEstilo-->",arch);
         ordenes.AddOrden(comando + " " + args);
     }
 }

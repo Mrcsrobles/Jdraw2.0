@@ -70,7 +70,7 @@ class Llamador {
         argumentos
          */
         int contador = 0;
-        String[] division = input.split(" +");
+        String[] division = input.split(" +");//Lo divido en orden y arguementos
         String args = ReconstructorComando.Reconstruir(division, 1);//A partir del espacio son los argumentos, que puede tener espacios
         String orden = division[0];
         //En este bucle por cada baliza que haya se mira si el comando pertenece a esa clase y si pertenece se pasan
@@ -85,7 +85,7 @@ class Llamador {
         if (contador==(listaBalizas.size())){
             System.out.println("Error");
         }
-        if (input.startsWith("load")) {
+        if (input.startsWith("load")) {//En el caso de que se carguen las ordenes de un archivo entonces se reejecutará todo
             Recargar(ordenes);
         }
     }
@@ -96,7 +96,7 @@ class Llamador {
 
         for (String i : lista) {
             Procesador(i);
-            ordenes.RemoveOrden();
+            ordenes.RemoveOrden();//Como en cada orden se añade la que se acaba de ejecutar hay que borrarla
         }
     }
 }

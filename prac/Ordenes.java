@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.LinkedList;
 
 public class Ordenes implements Serializable {
+    //En esta clase unicamente se almacenan las ordenes que se van ejecutando y permite manipularlas
     private LinkedList<String> ordenes;
 
     public Ordenes() {
