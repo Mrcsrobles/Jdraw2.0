@@ -25,6 +25,7 @@ public class Archivo {
         y se escribe el objeto Ordenes
          */
         try {
+            ruta = ruta.trim();
             File d = new File(ruta+".jd");//Se crea otro Archivo en el directorio indicado
             FileOutputStream f = new FileOutputStream(d);
             ObjectOutputStream o = new ObjectOutputStream(f);
@@ -38,6 +39,7 @@ public class Archivo {
         /*Para cargar un Archivo a nuestro tmp lo que haremos será copiar la lista de ordenes y ejecutarlas
         */
         try {
+            ruta = ruta.trim();
             File d = new File(ruta);//Se crea otro Archivo en el directorio indicado
             FileInputStream f = new FileInputStream(d);
             ObjectInputStream o = new ObjectInputStream(f);
